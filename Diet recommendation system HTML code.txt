@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diet Recommendation System</h1>
+        <form id="dietForm">
+            <label for="goal">Select your goal:</label>
+            <select id="goal" name="goal">
+                <option value="weight-loss">Weight Loss</option>
+                <option value="muscle-gain">Muscle Gain</option>
+                <option value="maintenance">Maintenance</option>
+            </select>
+
+            <label>What's your dietary preference?</label>
+            <input type="checkbox" id="vegetarian" name="vegetarian">
+            <label for="vegetarian">Vegetarian</label>
+            <br>
+            <input type="checkbox" id="vegan" name="vegan">
+            <label for="vegan">Vegan</label>
+
+            <label>Do you have any dietary restrictions?</label>
+            <input type="checkbox" id="gluten-free" name="gluten-free">
+            <label for="gluten-free">Gluten-free</label>
+            <br>
+            <input type="checkbox" id="lactose-free" name="lactose-free">
+            <label for="lactose-free">Lactose-free</label>
+
+            <input type="submit" value="Get Diet Plan">
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('dietForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Dummy logic for demonstration
+            var goal = document.getElementById('goal').value;
+            var dietaryPreferences = [];
+            if (document.getElementById('vegetarian').checked) {
+                dietaryPreferences.push('Vegetarian');
+            }
+            if (document.getElementById('vegan').checked) {
+                dietaryPreferences.push('Vegan');
+            }
+            var dietaryRestrictions = [];
+            if (document.getElementById('gluten-free').checked) {
+                dietaryRestrictions.push('Gluten-free');
+            }
+            if (document.getElementById('lactose-free').checked) {
+                dietaryRestrictions.push('Lactose-free');
+            }
+
+            // Dummy diet plan
+            var dietPlan = "Based on your preferences, here's a sample diet plan: <br>";
+            dietPlan += "Goal: " + goal + "<br>";
+            dietPlan += "Dietary Preferences: " + (dietaryPreferences.length > 0 ? dietaryPreferences.join(', ') : "None") + "<br>";
+            dietPlan += "Dietary Restrictions: " + (dietaryRestrictions.length > 0 ? dietaryRestrictions.join(', ') : "None");
+
+            document.getElementById('result').innerHTML = dietPlan;
+        });
+    </script>
+</body>
+</html>
