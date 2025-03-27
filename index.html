@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: black;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            max-width: 400px;
+            margin: auto;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        .recommendation {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Diet Recommendation Form</h1>
+    <form method="post">
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Weight (kg):</label>
+        <input type="number" name="weight" required>
+
+        <label>Height (cm):</label>
+        <input type="text" name="height" required>
+
+        <label>Workout Type:</label>
+        <select name="workout">
+            <option value="Yoga">Yoga</option>
+            <option value="Gym">Gym</option>
+            <option value="Running">Running</option>
+        </select>
+
+        <label>Disease:</label>
+        <select name="disease">
+            <option value="Diabetes">Diabetes</option>
+            <option value="Heart Disease">Heart Disease</option>
+            <option value="None">None</option>
+        </select>
+
+        <label>Allergies:</label>
+        <select name="allergies">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <button type="submit">Get Recommendation</button>
+    </form>
+
+    {% if recommendation %}
+        <div class="recommendation">
+            Recommended Foods: {{ recommendation }}
+        </div>
+    {% endif %}
+
+</body>
+</html>
